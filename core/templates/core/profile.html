@@ -1,0 +1,62 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<section class="profile-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="profile-sidebar">
+                    <div class="profile-user">
+                        <div class="profile-user-img">
+                            <img src="{{ user.image.url }}" alt="Profile Picture">
+                        </div>
+                        <h4 class="profile-user-name">{{ user.username }}</h4>
+                        <p class="profile-user-role">{{ user.sector }}</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="profile-content">
+                    <h2>Profile Information</h2>
+                    <div class="profile-info">
+                        <div class="info-row">
+                            <span class="info-label">Name:</span>
+                            <span class="info-value">{{ user.first_name }}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Email:</span>
+                            <span class="info-value">
+                                {{ user.email }}
+                            </span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Location:</span>
+                            <span class="info-value">{{ user.city }} / {{ user.country }}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Sector:</span>
+                            <span class="info-value">{{ user.sector }}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Last Experience:</span>
+                            <span class="info-value"> {{ user.last_experience }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

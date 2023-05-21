@@ -1,0 +1,117 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <datalist id="countries">
+      <option value="Turkey">
+      <option value="USA">
+      <option value="UK">
+      <option value="Germany">
+    </datalist>
+
+    <datalist id="sector">
+          <option value="IT">
+          <option value="BUSINESS">
+          <option value="ENGINEERING">
+          <option value="FREELANCER">
+    </datalist>
+
+    <datalist id="boolean">
+          <option value="YES">
+          <option value="NO">
+    </datalist>
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Job Add</h3>
+                        {% if not request.user.is_recruiter %}
+                            <h6>You are not recruiter if you submit this form, we will change your recruiter off to on!</h6>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form method="POST" action="." enctype="multipart/form-data">
+        {% if error %}
+            <p style="color: red">{{ error }}</p>
+        {% endif %}
+        {% csrf_token %}
+        <div class="catagory_area">
+        <div class="container">
+            <div class="row cat_search">
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="title">
+                            <input name = "title" type="text" placeholder="Title">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="description">
+                            <input name = "description" type="text" placeholder="Description">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="city">
+                            <input name = "city" type="text" placeholder="City">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="country">
+                            <input name = "country" list="countries" placeholder="Country">
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row cat_search">
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="sector">
+                            <input name = "sector" list="sector" placeholder="Sector">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="job_nature">
+                            <input name = "job_nature" type="text" placeholder="Job Type / Freelancer-FullTime">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="salary">
+                            <input name = "salary" type="text" placeholder="Salary">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="sth">
+                            <input name = "sth" type="text" placeholder="sth">
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="job_btn">
+                <br>
+                <button href="{% url 'job:jobs' %}" class="boxed-btn3">Add Job</button>
+            </div>
+
+        </div>
+        </div>
+
+
+    </form>
+{% endblock content %}

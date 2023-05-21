@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+{% block content %}
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Login</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form method="POST" action="." enctype="multipart/form-data">
+        {% if error %}
+            <p style="color: red">{{ error }}</p>
+        {% endif %}
+        {% csrf_token %}
+        <div class="catagory_area">
+        <div class="container">
+            <div class="row cat_search">
+                <div class="col-lg-8 col-md-4">
+                    <div class="single_input">
+                        <label for="username">
+                            <input name = "username" type="text" placeholder="Username">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-4">
+                    <div class="single_input">
+                        <label for="password">
+                            <input name = "password" type="password" placeholder="password">
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="job_btn">
+                <br>
+                <button href="#" class="boxed-btn3">Login</button>
+            </div>
+
+        </div>
+        </div>
+
+
+    </form>
+{% endblock content %}

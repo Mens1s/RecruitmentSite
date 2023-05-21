@@ -1,0 +1,146 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <datalist id="countries">
+      <option value="Turkey">
+      <option value="USA">
+      <option value="UK">
+      <option value="Germany">
+    </datalist>
+
+    <datalist id="sector">
+          <option value="IT">
+          <option value="BUSINESS">
+          <option value="ENGINEERING">
+          <option value="FREELANCER">
+    </datalist>
+
+    <datalist id="boolean">
+          <option value="YES">
+          <option value="NO">
+    </datalist>
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Register</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form method="POST" action="." enctype="multipart/form-data">
+        {% if error %}
+            <p style="color: red">{{ error }}</p>
+        {% endif %}
+        {% csrf_token %}
+        <div class="catagory_area">
+        <div class="container">
+            <div class="row cat_search">
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="username">
+                            <input name = "username" type="text" placeholder="Username">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="email">
+                            <input name = "email" type="email" placeholder="Email">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="password1">
+                            <input name = "password1" type="password" placeholder="Password">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="password2">
+                            <input name = "password2" type="password" placeholder="RePassword">
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row cat_search">
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="school">
+                            <input name = "school" type="text" placeholder="School / University">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="experience">
+                            <input name = "experience" type="text" placeholder="Last Experience">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="city">
+                            <input name = "city" placeholder="City">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="country">
+                            <input name = "country" list="countries" placeholder="Select Country">
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row cat_search">
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="sector">
+                            <input name = "name" type="text" placeholder="Name">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="last_name">
+                            <input name = "last_name" type="text" placeholder="Last Name">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="sector">
+                            <input name = "sector" list="sector" placeholder="Sector">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <label for="is_recruiter">
+                            <input name = "is_recruiter" list="boolean" placeholder="Are you HR?">
+                        </label>
+                    </div>
+                </div>
+
+
+            </div>
+            <input type="file" name="image" accept=".png, .jpg">
+
+            <div class="job_btn">
+                <br>
+                <button href="#" class="boxed-btn3">Register</button>
+            </div>
+
+        </div>
+        </div>
+
+
+    </form>
+{% endblock content %}
