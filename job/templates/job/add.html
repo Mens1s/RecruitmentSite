@@ -9,10 +9,9 @@
     </datalist>
 
     <datalist id="sector">
-          <option value="IT">
-          <option value="BUSINESS">
-          <option value="ENGINEERING">
-          <option value="FREELANCER">
+        {% for categoiry in jobCategories %}
+          <option value="{{ categoiry.name }}">
+        {% endfor %}
     </datalist>
 
     <datalist id="boolean">

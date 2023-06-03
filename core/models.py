@@ -15,14 +15,20 @@ class Person(AbstractUser):
     image = models.ImageField(upload_to='user_images/', null=True, blank=True)
     # cv = models.FileField(upload_to='user_cv/', null=True, blank=True)
 
+class JobCategories(models.Model):
+    name = models.CharField(max_length=100)
+    number = models.IntegerField()
+    details = models.CharField(max_length=250)
 
+    def __str__(self):
+        return self.name
 class Job(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     company = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     country = models.CharField(max_length=100)
-    sector = models.CharField(max_length=100)
+    sector = models.ForeignKey(JobCategories, on_delete=models.CASCADE)
     creator = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='created_jobs')
     is_active = models.BooleanField(default=True)
 

@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from core.models import Job, Person
+from core.models import Job, Person, JobCategories
 from .models import Applications
 
 
@@ -12,11 +12,21 @@ def add(request):
         description = request.POST['description']
         city = request.POST['city']
         country = request.POST['country']
-        sector = request.POST['sector']
+        sector = JobCategories.objects.filter(name=request.POST['sector'])
+        print(request.POST['sector'])
+        if sector.exists():
+            sector = sector.get()
+        else:
+            return render(request, 'job/add.html', {'error':'Select Right Sector!'})
+
         job_nature = request.POST['job_nature']
         salary = request.POST['salary']
 
         currentUser = Person.objects.filter(username=request.user.username).get()
+
+        sector.number += 1
+        sector.save()
+
         newJob = Job.objects.create(
             title=title,
             description=description,
@@ -31,7 +41,9 @@ def add(request):
 
         newJob.save()
         return render(request, 'job/jobs.html')
-    return render(request, 'job/add.html')
+    return render(request, 'job/add.html', {
+        'jobCategories': JobCategories.objects.all(),
+    } )
 
 
 def jobs(request):

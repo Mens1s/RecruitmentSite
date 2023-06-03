@@ -1,17 +1,18 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .models import Person, Job
+from .models import Person, Job, JobCategories
 from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def index(request):
     jobs = Job.objects
-
+    print(JobCategories.objects.all()[:8])
     return render(request, 'core/index.html',
             {
                 'jobs': jobs.all(),
                 'job_count': jobs.count(),
                 'users': Person.objects.all(),
+                'categories': JobCategories.objects.all()[:8],
             }
     )
 
